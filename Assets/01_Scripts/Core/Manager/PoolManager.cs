@@ -18,24 +18,24 @@ public class PoolManager : MonoSingleton<PoolManager>
         foreach (var pair in poolingList)
         {
             var pool = new Pool<PoolableMono>(pair.Prefab, transform, pair.Count);
-            pools.Add(pair.Prefab.name, pool);
+            pools.Add(pair.Prefab.Id, pool);
         }
     }
 
-    public PoolableMono Pop(string prefabName)
+    public PoolableMono Pop(string Id)
     {
-        if (false == pools.ContainsKey(prefabName))
+        if (false == pools.ContainsKey(Id))
         {
-            Debug.LogError($"Prefab does not exist on pool : {prefabName}");
+            Debug.LogError($"Prefab does not exist on pool : {Id}");
             return null;
         }
 
-        PoolableMono item = pools[prefabName].Pop();
+        PoolableMono item = pools[Id].Pop();
         return item;
     }
 
     public void Push(PoolableMono prefab)
     {
-        pools[prefab.name].Push(prefab);
+        pools[prefab.Id].Push(prefab);
     }
 }
