@@ -6,12 +6,12 @@ public class PlatformWaveMovement : MonoBehaviour
     private LineRenderer lineRenderer;
 
     private float start = 0;
-    private float end = 2;
+    private float end = 3;
 
     [SerializeField] private int pointCount = 100;  // 점 개수 
 
     [Header("Movement")]
-    [Range(-1, 1)]
+    [Range(-2, 2)]
     [SerializeField] private float amplitude = 1; // 진폭
     public float Amplitude => amplitude;
     [SerializeField] private float frequency = 1; // 진동수
@@ -39,6 +39,7 @@ public class PlatformWaveMovement : MonoBehaviour
         {
             float progress = (float)currentPoint / (pointCount - 1);
             float x = Mathf.Lerp(start, end, progress);
+            float pointAmplitude = amplitude * Mathf.Lerp(0.5f, 1.5f, progress);
             float y = amplitude * Mathf.Sin((Tau * frequency * x) + (Time.time * moveSpeed));
             moveVector = new Vector3(x, y, 0);
 
@@ -54,7 +55,7 @@ public class PlatformWaveMovement : MonoBehaviour
 
     public void SetAmplitude(float value)
     {
-        amplitude = Mathf.Clamp(value, -1, 1);
+        amplitude = Mathf.Clamp(value, -2, 2);
     }
 
 }

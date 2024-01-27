@@ -10,6 +10,8 @@ public class PlatformController : MonoBehaviour
     private float targetValue;
     private bool isPlus = true;
 
+    [SerializeField] private float changeAnimSpeed = 5f;
+
     private void Awake()
     {
         movement = GetComponent<PlatformWaveMovement>();
@@ -24,16 +26,16 @@ public class PlatformController : MonoBehaviour
             if (isPlus)
             {
                 // 음수로
-                targetValue = -1f;
+                targetValue = -2f;
             }
             else
             {
                 // 양수로
-                targetValue = 1f;
+                targetValue = 2f;
             }
         }
 
-        temp = movement.Amplitude + (targetValue * Time.deltaTime);
+        temp = movement.Amplitude + (targetValue * Time.deltaTime * changeAnimSpeed);       
         movement.SetAmplitude(temp);
     }
 
