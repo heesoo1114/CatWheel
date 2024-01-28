@@ -14,7 +14,7 @@ public class PlatformCollision : MonoBehaviour
         edgeCollider = GetComponent<EdgeCollider2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         SetCollider();
     }
@@ -34,5 +34,4 @@ public class PlatformCollision : MonoBehaviour
 
         edgeCollider.SetPoints(edgeList);
     }
-
 }

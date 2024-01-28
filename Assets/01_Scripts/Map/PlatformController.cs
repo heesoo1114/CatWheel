@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    private PlatformWaveMovement movement;
+    private PlatformMovement movement;
 
-    private float temp;
     private float targetValue;
     private bool isPlus = true;
 
@@ -14,7 +11,7 @@ public class PlatformController : MonoBehaviour
 
     private void Awake()
     {
-        movement = GetComponent<PlatformWaveMovement>();
+        movement = GetComponent<PlatformMovement>();
     }
 
     private void Update()
@@ -35,7 +32,7 @@ public class PlatformController : MonoBehaviour
             }
         }
 
-        temp = movement.Amplitude + (targetValue * Time.deltaTime * changeAnimSpeed);       
+        float temp = movement.Amplitude + (targetValue * Time.deltaTime * changeAnimSpeed);       
         movement.SetAmplitude(temp);
     }
 
