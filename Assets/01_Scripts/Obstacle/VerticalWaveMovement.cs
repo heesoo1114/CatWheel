@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VerticalMovement : MonoBehaviour
+public class VerticalWaveMovement : MonoBehaviour
 {
     [SerializeField] private float yMoveSpeed; // 상하 이동속도
     [SerializeField] private float yDelta = 2; // 이동 범위
