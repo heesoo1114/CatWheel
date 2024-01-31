@@ -36,7 +36,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private void OnEnable()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
     }
 
     private void OnDisable()

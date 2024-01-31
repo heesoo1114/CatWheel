@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
@@ -20,6 +16,8 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private float screenX = 1.5f;
     [SerializeField] private float screenY = 1.5f;
 
+    private bool isCamFollow = true;
+
     private void Awake()
     {
         myCam = Camera.main;
@@ -33,11 +31,24 @@ public class FollowCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        targetPosition.x = targetTransform.position.x + screenX;
-        targetPosition.y = camInitPosition.y + screenY;
-        targetPosition.z = camInitPosition.z;
+        if (isCamFollow)
+        {
+            targetPosition.x = targetTransform.position.x + screenX;
+            targetPosition.y = camInitPosition.y + screenY;
+            targetPosition.z = camInitPosition.z;
 
-        smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
-        myCam.transform.position = smoothedPosition;
+            smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+            myCam.transform.position = smoothedPosition;
+        }
+    }
+
+    public void ActivateFollow()
+    {
+        isCamFollow = true;
+    }
+
+    public void DeactivateFollow()
+    {
+        isCamFollow = false;
     }
 }

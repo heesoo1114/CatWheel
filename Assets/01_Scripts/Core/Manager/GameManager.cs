@@ -16,6 +16,7 @@ public class GameManager : MonoSingleton<GameManager>
     public override void Init()
     {
         PoolManager.Instance.Init();
+        InputHandler.Instance.Init();
     }
 
     public void FinishGame()
