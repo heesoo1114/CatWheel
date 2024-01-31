@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Bird : MovementObstacle
+public class Airballoon : MovementObstacle
 {
-    [SerializeField] private float destroyPositionX = -2f; 
+    [SerializeField] private float destroyPositionY = 15f;
 
     protected override void DestroyCheck()
     {
-        if (transform.position.x <= destroyPositionX)
+        if (transform.position.y >= destroyPositionY)
         {
             PoolManager.Instance.Push(this);
         }

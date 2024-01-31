@@ -18,14 +18,6 @@ public class GameManager : MonoSingleton<GameManager>
         PoolManager.Instance.Init();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var clone = PoolManager.Instance.Pop("Bird");
-        }
-    }
-
     public void FinishGame()
     {
 #if UNITY_EDITOR
