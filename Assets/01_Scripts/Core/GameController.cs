@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : Subject 
@@ -9,8 +7,8 @@ public class GameController : Subject
 
     public bool IsReady => gameState == GameState.Ready;
     public bool IsPlaying => gameState == GameState.Playing;
+    public bool IsClear => gameState == GameState.Clear;
     public bool IsOver => gameState == GameState.Over;
-    public bool IsUIMode => gameState == GameState.UIMode;
 
     private void Start()
     {
@@ -22,5 +20,4 @@ public class GameController : Subject
         gameState = state;
         NotifyObservers(); // GameState가 변경된 것을 알려주자
     }
-
 }

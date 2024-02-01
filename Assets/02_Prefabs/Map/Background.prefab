@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7725368598210486034}
   - component: {fileID: 5444257707611974192}
+  - component: {fileID: 5701906779114574129}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5444257707611974192
 SpriteRenderer:
@@ -84,3 +85,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5701906779114574129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298730926423014131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc13f0806c410514fab6bb7bba0e6f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImages:
+  - {fileID: 21300000, guid: f69ca00090f824a44be9094a8a7a462c, type: 3}
+  - {fileID: 21300000, guid: db3e36b475c818148a6ee0460fa5700a, type: 3}
+  - {fileID: 21300000, guid: ae47703066ea31245952bb0bee357d98, type: 3}
+  - {fileID: 21300000, guid: 860308045766c934fb53a9721732539c, type: 3}
+  - {fileID: 21300000, guid: 57cd362d6b8a1cd4ea33bacef943f76e, type: 3}
+  - {fileID: 21300000, guid: 02ad00f363afe6b49be3a33d2a364d27, type: 3}
+  - {fileID: 21300000, guid: 7d842e0bf76771546aa1f029a7a6734d, type: 3}
+  - {fileID: 21300000, guid: 96ac7cfd6b719f843ab12b8339079f27, type: 3}

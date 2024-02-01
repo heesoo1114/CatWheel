@@ -8,6 +8,8 @@ public class PlatformCollision : MonoBehaviour
 
     List<Vector2> edgeList = new List<Vector2>();
 
+    private bool isCanCollision;
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -16,7 +18,10 @@ public class PlatformCollision : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetCollider();
+        if (isCanCollision)
+        {
+            SetCollider();
+        }
     }
 
     private void SetCollider()
@@ -33,5 +38,17 @@ public class PlatformCollision : MonoBehaviour
         }
 
         edgeCollider.SetPoints(edgeList);
+    }
+
+    public void OnCollider()
+    {
+        isCanCollision = true;
+        edgeCollider.enabled = true;
+    }
+
+    public void OffCollider()
+    {
+        isCanCollision = false;
+        edgeCollider.enabled = false;
     }
 }

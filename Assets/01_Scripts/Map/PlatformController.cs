@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlatformController : Observer<GameController>
 {
     private PlatformMovement movement;
+    private PlatformCollision collision;
 
     private float targetValue;
     private bool isPlus = true;
@@ -16,9 +17,11 @@ public class PlatformController : Observer<GameController>
         if (mySubject.IsPlaying)
         {
             movement.ActivateDraw();
+            collision.OnCollider();
         }
-        else
+        else if (mySubject.IsReady)
         {
+            collision.OffCollider();
             movement.DeactivateDraw();
         }
     }
@@ -30,6 +33,7 @@ public class PlatformController : Observer<GameController>
         // 터치 시 이벤트 연결
         InputHandler.Instance.OnTouch += ChangeAmplitude;
 
+        collision = GetComponentInChildren<PlatformCollision>();
         movement = GetComponent<PlatformMovement>();
         initAmplitude = movement.Amplitude;
     }

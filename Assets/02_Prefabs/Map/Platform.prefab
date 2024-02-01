@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &6692639480580116360
 LineRenderer:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4901417d648cbe41a6623504232ffb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeAnimSpeed: 2
+  changeAnimSpeed: 2.1
 --- !u!114 &6303011002124359402
 MonoBehaviour:
   m_ObjectHideFlags: 0

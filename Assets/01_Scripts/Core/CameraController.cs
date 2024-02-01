@@ -20,7 +20,7 @@ public class CameraController : Observer<GameController>
 
     public override void Notify()
     {
-        isCamFollow = mySubject.IsPlaying;
+        isCamFollow = !(mySubject.IsOver || mySubject.IsClear);
     }
 
     private void Awake()
@@ -29,11 +29,6 @@ public class CameraController : Observer<GameController>
         
         myCam = Camera.main;
         camInitPosition = transform.position;
-    }
-
-    private void Start()
-    {
-        transform.position = camInitPosition;
     }
 
     private void LateUpdate()
