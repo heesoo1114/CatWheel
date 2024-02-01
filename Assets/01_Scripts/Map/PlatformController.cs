@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlatformController : MonoBehaviour
+public class PlatformController : Observer<GameController>
 {
     private PlatformMovement movement;
 
@@ -11,8 +11,22 @@ public class PlatformController : MonoBehaviour
 
     private float initAmplitude;
 
+    public override void Notify()
+    {
+        if (mySubject.IsPlaying)
+        {
+            movement.ActivateDraw();
+        }
+        else
+        {
+            movement.DeactivateDraw();
+        }
+    }
+
     private void Awake()
     {
+        SetUp();
+
         // 터치 시 이벤트 연결
         InputHandler.Instance.OnTouch += ChangeAmplitude;
 
@@ -40,4 +54,6 @@ public class PlatformController : MonoBehaviour
             targetValue = initAmplitude;
         }
     }
+
+    
 }

@@ -70,14 +70,14 @@ public class PlatformMovement : MonoBehaviour
         }
     }
 
-    private void ActivateDraw()
+    public void ActivateDraw()
     {
         lineRenderer.enabled = true;
         isCanDraw = true;
     }
 
     // ÇÃ·§Æû »ý¼º ºñÈ°¼ºÈ­
-    private void DeactivateDraw()
+    public void DeactivateDraw()
     {
         isCanDraw = false;
         lineRenderer.enabled = false;

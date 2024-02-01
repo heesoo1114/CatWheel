@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+public class CameraController : Observer<GameController>
 {
     private Camera myCam;
 
@@ -16,10 +16,17 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private float screenX = 1.5f;
     [SerializeField] private float screenY = 1.5f;
 
-    private bool isCamFollow = true;
+    private bool isCamFollow;
+
+    public override void Notify()
+    {
+        isCamFollow = mySubject.IsPlaying;
+    }
 
     private void Awake()
     {
+        SetUp();
+        
         myCam = Camera.main;
         camInitPosition = transform.position;
     }
@@ -40,15 +47,5 @@ public class FollowCamera : MonoBehaviour
             smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
             myCam.transform.position = smoothedPosition;
         }
-    }
-
-    public void ActivateFollow()
-    {
-        isCamFollow = true;
-    }
-
-    public void DeactivateFollow()
-    {
-        isCamFollow = false;
     }
 }

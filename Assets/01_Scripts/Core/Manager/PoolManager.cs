@@ -5,7 +5,7 @@ public class PoolManager : MonoSingleton<PoolManager>
 {
     [SerializeField] private PoolingListSO poolingListSO;
 
-    private Dictionary<string, Pool<PoolableMono>> pools = new Dictionary<string, Pool<PoolableMono>>();
+    private Dictionary<string, Pool<PoolableMono>> pools = new ();
 
     public override void Init()
     {
