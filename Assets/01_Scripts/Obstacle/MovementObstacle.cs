@@ -45,6 +45,7 @@ public abstract class MovementObstacle : PoolableMono
 
     public override void OnPush()
     {
+        isNotified = false;
         notifyComponent.Reset();
     }
 }

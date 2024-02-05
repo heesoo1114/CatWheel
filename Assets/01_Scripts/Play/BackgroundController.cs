@@ -24,7 +24,7 @@ public class BackgroundController : Observer<GameController>
 
     private void ChangeRandomImage()
     {
-        int randomIndedx = Random.Range(0, backgroundImages.Count + 1);
+        int randomIndedx = Random.Range(0, backgroundImages.Count);
         spriteRenderer.sprite = backgroundImages[randomIndedx];
     }
 }

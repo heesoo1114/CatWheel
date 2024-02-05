@@ -213,7 +213,7 @@ SurfaceEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Speed: 12
+  m_Speed: 14
   m_SpeedVariation: 0
   m_ForceScale: 1
   m_UseContactForce: 0
@@ -255,14 +255,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3979322396830503360}
-  m_LocalRotation: {x: -0, y: -0, z: -0.32913005, w: 0.9442846}
-  m_LocalPosition: {x: -3.66, y: -3.37, z: 0.25547513}
+  m_LocalRotation: {x: -0, y: -0, z: -0.37943676, w: 0.92521775}
+  m_LocalPosition: {x: -3.85, y: -2.92, z: 0.25547513}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8360073517784380656}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -38.432}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -44.598}
 --- !u!212 &7160871887264371255
 SpriteRenderer:
   m_ObjectHideFlags: 0

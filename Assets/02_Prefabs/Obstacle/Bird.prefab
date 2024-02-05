@@ -142,9 +142,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
+  m_Offset: {x: 0.022480916, y: -0.0952082}
+  m_Size: {x: 0.6970727, y: 0.37705132}
+  m_Direction: 1
 --- !u!114 &6666161671697144077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: Bird
   blinkTime: 0.6
+  startBlinkDistance: 20
+  stopBlinkDistance: 10
+  destroyPositionX: -2
 --- !u!1 &7667530777849599058
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,14 +200,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7667530777849599058}
-  m_LocalRotation: {x: -0, y: -0, z: -0.11346543, w: 0.99354196}
-  m_LocalPosition: {x: -23.4, y: 5.4, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.11320323, w: 0.9935719}
+  m_LocalPosition: {x: -0.046, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 976895510579513342}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.03}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13}
 --- !u!212 &8591918510500020716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -251,7 +254,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 50, y: 1}
+  m_Size: {x: 50, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -269,4 +272,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cd8a456be9d7d4889575cb6622c173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashTime: 0.09
+  flashTime: 0.13

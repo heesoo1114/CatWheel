@@ -15,11 +15,6 @@ public class GameManager : MonoSingleton<GameManager>
         Init();
     }
 
-    private void Start()
-    {
-        GameStart();
-    }
-
     public override void Init()
     {
         PoolManager.Instance.Init();

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cd8a456be9d7d4889575cb6622c173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashTime: 0.09
+  flashTime: 0.13
 --- !u!1 &4356508516660682461
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,13 +126,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4356508516660682461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.5, y: -52, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5786228626796984599}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8627673984184615727
 SpriteRenderer:
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7323d6f2b34041b439b28dd7269c04d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 3
 --- !u!114 &573933947136611525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +250,4 @@ MonoBehaviour:
   blinkTime: 0.6
   startBlinkDistance: 20
   stopBlinkDistance: 10
+  destroyPositionY: 15
