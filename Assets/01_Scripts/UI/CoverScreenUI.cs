@@ -1,25 +1,26 @@
-using System.Collections;
 using UnityEngine;
 
-public class CoverScreenUI : Observer<GameController>
+public class CoverScreenUI : ScreenUI
 {
     private Animator animator;
 
     private int isOnHash = Animator.StringToHash("isOn");
 
-    private void Awake()
+    protected override void Awake()
     {
-        SetUp();
-
-        animator = GetComponent<Animator>();
+        base.Awake();
+        animator = GetComponentInChildren<Animator>();
     }
 
-    public override void Notify()
+    public override void OnShow()
     {
-        if (mySubject.IsOver || mySubject.IsClear)
-        {
-            PlayTransitionEffect();
-        }
+        PlayTransitionEffect();
+        Debug.Log("OnShow");
+    }
+
+    public override void OnHide()
+    {
+        
     }
 
     private void PlayTransitionEffect()

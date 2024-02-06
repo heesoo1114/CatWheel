@@ -46,7 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         InputHandler.Instance.DeactivateReciever();
 
-        StartCoroutine(this.GiveDelayWithAction(0.5f,() =>
+        StartCoroutine(this.GiveDelayWithAction(1.02f,() =>
         {
             gameController.ChangeGameState(GameState.Ready); 
         }));

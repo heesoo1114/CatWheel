@@ -15,7 +15,6 @@ public class StageData
     public void StageUp()
     {
         StageNumber++;
-        Debug.Log(StageNumber);
 
         Frequency += 0.23f;
         MoveSpeed += 0.025f;
