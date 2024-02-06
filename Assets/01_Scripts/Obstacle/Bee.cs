@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bee : PoolableMono
+public class Bee : MovementObstacle
 {
-    public override void OnPop()
+    protected override void DestroyCheck()
     {
-
+           
     }
 
-    public override void OnPush()
+    public sealed override void OnPop()
     {
+        base.OnPop();
+    }
 
+    public sealed override void OnPush()
+    {
+        base.OnPush();
     }
 }

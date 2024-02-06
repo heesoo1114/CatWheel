@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: Bird
   blinkTime: 0.6
-  startBlinkDistance: 20
+  startBlinkDistance: 25
   stopBlinkDistance: 10
   destroyPositionX: -2
 --- !u!1 &7667530777849599058
@@ -272,4 +272,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cd8a456be9d7d4889575cb6622c173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashTime: 0.13
+  flashTime: 0.09

@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ObstaclSpawner : Observer<GameController>
 {
     [SerializeField] private string spawnObjectPoolID;
+    [SerializeField] private bool isOnce = false;
 
     [Header("Spawn")]
     [SerializeField] private float spawnInterval;
@@ -14,18 +16,24 @@ public abstract class ObstaclSpawner : Observer<GameController>
 
     private Coroutine currentCoroutine = null;
 
-    protected Vector3 randomPosition; 
+    private List<PoolableMono> clones = new ();
+
+    protected Vector3 randomPosition;
+
+    private StageData stageData;
 
     public sealed override void Notify()
     {
         if (mySubject.IsPlaying)
         {
+            SetData();
             StopCurrentSpawnRoop();
-            currentCoroutine = StartCoroutine(SpawnRoopCor());
+            currentCoroutine = StartCoroutine(SpawnRoopCor(isOnce));
         }
         else
         {
             StopCurrentSpawnRoop();
+            ClearObject();
         }
     }
 
@@ -34,15 +42,43 @@ public abstract class ObstaclSpawner : Observer<GameController>
         SetUp();
     }
 
+    private void Start()
+    {
+        stageData = GameManager.Instance.StageData;
+    }
+
+    private void SetData()
+    {
+        if (isOnce)
+        {
+            spawnCount = stageData.SpawnCount;
+        }
+        else
+        {
+            spawnInterval = stageData.SpawnInterval;
+        }
+    }
+
     protected abstract void SetRandomPosition();
 
     private void SpawnObject()
     {
         PoolableMono clone = PoolManager.Instance.Pop(spawnObjectPoolID);
+        clone.transform.SetParent(transform);
         clone.transform.SetPositionAndRotation(randomPosition, clone.transform.localRotation);
+
+        clones.Add(clone);
     }
 
-    private IEnumerator SpawnRoopCor()
+    private void ClearObject()
+    {
+        foreach (var clone in clones)
+        {
+            PoolManager.Instance.Push(clone);
+        }
+    }
+
+    private IEnumerator SpawnRoopCor(bool isOnce)
     {
         while (true)
         {
@@ -50,6 +86,11 @@ public abstract class ObstaclSpawner : Observer<GameController>
             {
                 SetRandomPosition();
                 SpawnObject();
+            }
+
+            if (isOnce)
+            {
+                yield break;
             }
 
             yield return new WaitForSeconds(spawnInterval);

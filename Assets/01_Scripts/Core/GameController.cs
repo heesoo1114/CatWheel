@@ -17,7 +17,11 @@ public class GameController : Subject
 
     public void ChangeGameState(GameState state)
     {
-        gameState = state;
+        if (state != gameState)
+        {
+            gameState = state;
+        }
+
         NotifyObservers(); // GameState가 변경된 것을 알려주자
     }
 }

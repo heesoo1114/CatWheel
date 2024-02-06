@@ -21,9 +21,10 @@ public abstract class MovementObstacle : PoolableMono
 
     protected virtual void Update()
     {
-        distance = Vector2.Distance(transform.position, playerTransform.position);
+        // distance = Vector2.Distance(transform.position, playerTransform.position);
+        distance = Mathf.Abs(transform.position.x - playerTransform.position.x);
 
-        if (distance <= stopBlinkDistance)
+        if ((distance <= stopBlinkDistance) && isNotified)
         {
             notifyComponent.StopBlink();
         }

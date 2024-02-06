@@ -34,6 +34,7 @@ public class NotifyComponent : MonoBehaviour
         {
             StopCoroutine(currentCoroutine);
         }
+        Reset();
     }
 
     private IEnumerator BlinkCor(float endTime)

@@ -11,7 +11,7 @@ public class PlatformMovement : MonoBehaviour
     [SerializeField] private int pointCount = 100;  // Á¡ °³¼ö 
 
     [Header("Movement")]
-    [Range(-2, 2)]
+    [Range(-5, 5)]
     [SerializeField] private float amplitude = 1; // ÁøÆø
     public float Amplitude
     {
@@ -24,6 +24,16 @@ public class PlatformMovement : MonoBehaviour
 
     [SerializeField] private float frequency = 1; // Áøµ¿¼ö
     [SerializeField] private float moveSpeed = 3; // ¼Óµµ
+    public float Frequency
+    {
+        get => frequency;
+        set => frequency = value;
+    }
+    public float MoveSpeed
+    {
+        get => moveSpeed;
+        set => moveSpeed = value;
+    }
 
     private float Tau = 2 * Mathf.PI;
     private Vector3 moveVector;
@@ -34,12 +44,6 @@ public class PlatformMovement : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = pointCount;
-
-        // ·£´ý¹ë·ù
-        ampitudeRandomValue = new Vector2(Random.Range(-10, 0), Random.Range(5, 15));
-        ampitudeRandomValue *= 0.1f;
-
-        isCanDraw = true;
     }
 
     private void Update()
@@ -72,6 +76,12 @@ public class PlatformMovement : MonoBehaviour
 
     public void ActivateDraw()
     {
+        // ·£´ý¹ë·ù
+        ampitudeRandomValue.x = Random.Range(-10, 1);
+        ampitudeRandomValue.y = Random.Range(5, 14);
+        // ampitudeRandomValue.y = ampitudeRandomValue.x + 10;
+        ampitudeRandomValue *= 0.1f;
+
         lineRenderer.enabled = true;
         isCanDraw = true;
     }

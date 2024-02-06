@@ -12,10 +12,13 @@ public class PlatformController : Observer<GameController>
 
     private float initAmplitude;
 
+    private StageData stageData;
+
     public override void Notify()
     {
         if (mySubject.IsPlaying)
         {
+            SetData();
             movement.ActivateDraw();
             collision.OnCollider();
         }
@@ -38,11 +41,22 @@ public class PlatformController : Observer<GameController>
         initAmplitude = movement.Amplitude;
     }
 
+    private void Start()
+    {
+        stageData = GameManager.Instance.StageData;
+    }
+
     // ÁøÆø º¯°æ
     private void Update()
     {
         float temp = movement.Amplitude + (targetValue * Time.deltaTime * changeAnimSpeed);       
         movement.SetAmplitude(temp);
+    }
+
+    private void SetData()
+    {
+        movement.Frequency = stageData.Frequency;
+        movement.MoveSpeed = stageData.MoveSpeed; 
     }
 
     private void ChangeAmplitude()
@@ -58,6 +72,5 @@ public class PlatformController : Observer<GameController>
             targetValue = initAmplitude;
         }
     }
-
     
 }

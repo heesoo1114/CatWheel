@@ -229,7 +229,7 @@ MonoBehaviour:
   amplitude: 2
   amplitudeClampValue: {x: -2, y: 2}
   ampitudeRandomValue: {x: 0, y: 0}
-  frequency: 2.5
+  frequency: 1.75
   moveSpeed: 1
 --- !u!114 &1578239084000581124
 MonoBehaviour:

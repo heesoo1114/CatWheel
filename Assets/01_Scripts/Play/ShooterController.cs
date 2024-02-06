@@ -28,7 +28,7 @@ public class ShooterController : Observer<GameController>
         surfaceEffector.enabled = true;
         animator.SetTrigger(isShootHash);
 
-        StartCoroutine(this.GiveDelayWithAction(1f, () =>
+        StartCoroutine(this.GiveDelayWithAction(0.3f, () =>
         {
             surfaceEffector.enabled = false;
         }));
