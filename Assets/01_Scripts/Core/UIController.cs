@@ -4,6 +4,10 @@ public class UIController : Observer<GameController>
 {
     private List<ScreenUI> screens = new ();
 
+    private string coverScreenString = "CoverScreen";
+    private string mainScreenString = "MainScreen";
+    private string inGameScreenString = "InGameScreen";
+
     public override void Notify()
     {
         if (mySubject.IsReady)
@@ -25,45 +29,53 @@ public class UIController : Observer<GameController>
         SetUp();
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void ClearSreen()
     {
         foreach (ScreenUI screen in screens)
         {
             screen.Hide();
         }
+        screens.Clear();
     }
 
     private void OnReady()
     {
-        ScreenUI currentScreen = PoolManager.Instance.Pop("MainScreen") as ScreenUI;
-        currentScreen.Show();
-        screens.Add(currentScreen);
+        ClearSreen();
+
+        var mainScreen = GetScreenUI(mainScreenString);
+        mainScreen.Show();
+        mainScreen.transform.SetAsFirstSibling();
     }
 
     private void OnPlaying()
     {
         ClearSreen();
-        ScreenUI currentScreen = PoolManager.Instance.Pop("InGameScreen") as ScreenUI;
-        currentScreen.Show();
-        screens.Add(currentScreen);
+
+        var inGameScreen = GetScreenUI(inGameScreenString);
+        inGameScreen.Show();
     }
 
     private void OnFinish()
     {
-        ClearSreen();
+        var coverScreen = GetScreenUI(coverScreenString, true);
+        coverScreen.Show();
 
-        // coverScreen은 애니메이션 재생이 끝나면 자동으로 사라짐
-        ScreenUI currentScreen = PoolManager.Instance.Pop("CoverScreen") as ScreenUI;
-        currentScreen.Show();
-
-        StartCoroutine(this.GiveDelayWithAction(1.1f, () =>
+        // coverScreen은 애니메이션 재생이 끝나면 자동으로 사라지게
+        StartCoroutine(this.GiveDelayWithAction(1.2f, () =>
         {
-            currentScreen.Hide();
+            coverScreen.Hide();
         }));
+    }
+    
+    private ScreenUI GetScreenUI(string poolID, bool isAutoDelete = false)
+    {
+        ScreenUI screen = PoolManager.Instance.Pop(poolID) as ScreenUI;
+
+        if (false == isAutoDelete)
+        {
+            screens.Add(screen);
+        }
+
+        return screen;
     }
 }

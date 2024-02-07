@@ -15,7 +15,6 @@ public class CoverScreenUI : ScreenUI
     public override void OnShow()
     {
         PlayTransitionEffect();
-        Debug.Log("OnShow");
     }
 
     public override void OnHide()
