@@ -9,7 +9,7 @@ public abstract class ScreenUI : PoolableMono
 
     protected virtual void Awake()
     {
-        canvasTransform = FindObjectOfType<Canvas>().transform;
+        canvasTransform = FindObjectOfType<Canvas>().transform.GetChild(0);
     }
 
     public void Show()
@@ -19,6 +19,7 @@ public abstract class ScreenUI : PoolableMono
             isActive = true;
             transform.SetParent(canvasTransform);
             transform.position = canvasTransform.position;
+            transform.localScale = Vector3.one;
             OnShow();
         }
     }

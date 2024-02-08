@@ -16,12 +16,12 @@ public class StageData
     {
         StageNumber++;
 
-        Frequency += 0.23f;
+        Frequency += 0.03f;
         MoveSpeed += 0.025f;
-        SpawnInterval -= 0.05f;
+        SpawnInterval -= 0.5f;
 
-        // 15스테이지 마다
-        if ((StageNumber % 15) == 0)
+        // 20 스테이지 마다
+        if ((StageNumber % 20) == 0)
         {
             SpawnCount++;
         }

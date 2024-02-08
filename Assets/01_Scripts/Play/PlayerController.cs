@@ -23,10 +23,4 @@ public class PlayerController : Observer<GameController>
             transform.position = initPosition;
         }
     }
-
-    void Update()
-    {
-        // 상하 clamp 걸어서 게임오브젝트 꺼주기
-        // 골라인까지 남은 거리 X값
-    }
 }

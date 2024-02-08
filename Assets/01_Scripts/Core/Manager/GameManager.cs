@@ -12,6 +12,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
+        PlayerPrefs.DeleteAll();
+
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GetComponent<GameController>();
         StageData = new StageData();
@@ -29,7 +31,6 @@ public class GameManager : MonoSingleton<GameManager>
     public void GameStart()
     {
         gameController.ChangeGameState(GameState.Playing);
-        InputHandler.Instance.ActivateReciever();
     }
 
     public void GameDone(bool isClear)
@@ -43,8 +44,6 @@ public class GameManager : MonoSingleton<GameManager>
         {
             gameController.ChangeGameState(GameState.Over);
         }
-
-        InputHandler.Instance.DeactivateReciever();
 
         StartCoroutine(this.GiveDelayWithAction(0.5f,() =>
         {

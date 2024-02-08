@@ -18,12 +18,18 @@ public class PlatformController : Observer<GameController>
     {
         if (mySubject.IsPlaying)
         {
+            // 게임 시작 시 이벤트 연결
+            InputHandler.Instance.OnTouch += ChangeAmplitude;
+            
             SetData();
-            movement.ActivateDraw();
             collision.OnCollider();
+            movement.ActivateDraw();
         }
         else if (mySubject.IsReady)
         {
+            // 준비상태일 때는 연결 해제
+            InputHandler.Instance.OnTouch -= ChangeAmplitude;
+
             collision.OffCollider();
             movement.DeactivateDraw();
         }
@@ -32,9 +38,6 @@ public class PlatformController : Observer<GameController>
     private void Awake()
     {
         SetUp();
-
-        // 터치 시 이벤트 연결
-        InputHandler.Instance.OnTouch += ChangeAmplitude;
 
         collision = GetComponentInChildren<PlatformCollision>();
         movement = GetComponent<PlatformMovement>();
