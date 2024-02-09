@@ -6,12 +6,12 @@ public class MainScreenUI : ScreenUI
 {
     public override void OnShow()
     {
-        InputHandler.Instance.OnTouch += TouchEvent;
+
     }
 
     public override void OnHide()
     {
-        InputHandler.Instance.OnTouch -= TouchEvent;
+        
     }
 
     private void TouchEvent()

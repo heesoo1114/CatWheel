@@ -12,8 +12,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
-
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GetComponent<GameController>();
         StageData = new StageData();
