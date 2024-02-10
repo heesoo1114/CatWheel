@@ -7,6 +7,8 @@ public class ShooterController : Observer<GameController>
 
     private int isShootHash = Animator.StringToHash("isShoot");
 
+    [SerializeField] private AudioClip shootClip;
+
     private void Awake()
     {
         SetUp();
@@ -31,6 +33,7 @@ public class ShooterController : Observer<GameController>
         StartCoroutine(this.GiveDelayWithAction(0.3f, () =>
         {
             surfaceEffector.enabled = false;
+            AudioManager.Instance.Play(shootClip);
         }));
     }
 }

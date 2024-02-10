@@ -411,6 +411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: MainScreen
+  audioPlayImage: {fileID: 21300000, guid: cd72311f1180af14db04c6aba447b34c, type: 3}
+  audioMuteImage: {fileID: 21300000, guid: 07b32c538f796844bbcd68c43da30dcf, type: 3}
 --- !u!1 &8514573275971081489
 GameObject:
   m_ObjectHideFlags: 0

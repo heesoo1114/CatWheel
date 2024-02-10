@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163808a37500a464baa26206f42a343a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootClip: {fileID: 8300000, guid: 9fb1eaa7ea8b53a4fbfb70a7eeb25e8c, type: 3}
 --- !u!1 &3979322396830503360
 GameObject:
   m_ObjectHideFlags: 0

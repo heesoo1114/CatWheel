@@ -34,16 +34,6 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     public virtual void Init() { }
 
-    private void OnEnable()
-    {
-        // DontDestroyOnLoad(gameObject);
-    }
-
-    private void OnDisable()
-    {
-        
-    }
-
     private void OnDestroy()
     {
         isQuitting = true;

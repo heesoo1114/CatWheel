@@ -77,8 +77,8 @@ public class PlatformMovement : MonoBehaviour
     public void ActivateDraw()
     {
         // ·£´ý¹ë·ù
-        ampitudeRandomValue.x = Random.Range(-10, 1);
-        ampitudeRandomValue.y = Random.Range(5, 14);
+        ampitudeRandomValue.x = Random.Range(-10, -3);
+        ampitudeRandomValue.y = Random.Range(5, 11);
         // ampitudeRandomValue.y = ampitudeRandomValue.x + 10;
         ampitudeRandomValue *= 0.1f;
 

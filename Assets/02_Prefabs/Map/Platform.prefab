@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1438648992114945392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: 0}
-  m_LocalScale: {x: 80, y: 3, z: 1}
+  m_LocalScale: {x: 90, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,8 +130,8 @@ LineRenderer:
       m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 5
+    numCornerVertices: 10
+    numCapVertices: 10
     alignment: 0
     textureMode: 1
     textureScale: {x: 1.5, y: -1}
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeAnimSpeed: 1.6
+  changeDelayTime: 0.2
 --- !u!114 &6303011002124359402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,9 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248a20361bdef78498647d94affcc698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointCount: 400
-  amplitude: -2.2
-  amplitudeClampValue: {x: -2.2, y: 2.2}
+  pointCount: 600
+  amplitude: -2
+  amplitudeClampValue: {x: -2, y: 2}
   ampitudeRandomValue: {x: 0, y: 0}
   frequency: 2.7
   moveSpeed: 0

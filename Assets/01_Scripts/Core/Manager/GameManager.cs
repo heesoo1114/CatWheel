@@ -10,6 +10,9 @@ public class GameManager : MonoSingleton<GameManager>
     private string dataSaveKey = "stageData";
     public StageData StageData { get; private set; }
 
+    [SerializeField] private AudioClip clearClip;
+    [SerializeField] private AudioClip failClip;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -24,6 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         PoolManager.Instance.Init();
         InputHandler.Instance.Init();
+        AudioManager.Instance.Init();
     }
 
     public void GameStart()
@@ -37,10 +41,12 @@ public class GameManager : MonoSingleton<GameManager>
         {
             gameController.ChangeGameState(GameState.Clear);
             StageData.StageUp();
+            AudioManager.Instance.Play(clearClip);
         }
         else
         {
             gameController.ChangeGameState(GameState.Over);
+            AudioManager.Instance.Play(failClip);
         }
 
         StartCoroutine(this.GiveDelayWithAction(0.5f,() =>
