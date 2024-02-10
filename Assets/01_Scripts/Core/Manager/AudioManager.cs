@@ -6,9 +6,21 @@ public class AudioManager : MonoSingleton<AudioManager>
     private bool isMuted = false;
     public bool IsMuted => isMuted;
 
+    private PlayerData playerData;
+
     public override void Init()
     {
-        // nothing
+        playerData = GameManager.Instance.PlayerData;
+        isMuted = playerData.isMuted;
+
+        if (isMuted)
+        {
+            AudioListener.volume = 0;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+        }
     }
 
     public void Play(AudioClip clip, bool isWithVariablePitch = false)

@@ -7,8 +7,8 @@ public class GameManager : MonoSingleton<GameManager>
     private GameObject player;
     public GameObject Player => player;
 
-    private string dataSaveKey = "stageData";
     public StageData StageData { get; private set; }
+    public PlayerData PlayerData { get; private set; }
 
     [SerializeField] private AudioClip clearClip;
     [SerializeField] private AudioClip failClip;
@@ -17,8 +17,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GetComponent<GameController>();
-        StageData = new StageData();
 
+        SetData();
         SetFrameRate();
         Init();
     }
@@ -28,6 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
         PoolManager.Instance.Init();
         InputHandler.Instance.Init();
         AudioManager.Instance.Init();
+        SaveManager.Instance.Init();
     }
 
     public void GameStart()
@@ -64,45 +65,23 @@ public class GameManager : MonoSingleton<GameManager>
 #endif
     }
 
+    public void SetData()
+    {
+        StageData = SaveManager.Instance.LoadData<StageData>();
+        PlayerData = SaveManager.Instance.LoadData<PlayerData>();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveManager.Instance.SaveData(StageData);
+        PlayerData.isMuted = AudioManager.Instance.IsMuted;
+        SaveManager.Instance.SaveData(PlayerData);
+    }
+
     private void SetFrameRate()
     {
 #if UNITY_ANDROID
         Application.targetFrameRate = 60;
 #endif
     }
-
-    #region SaveSystem
-
-    private void SaveStageData()
-    {
-        string json = JsonUtility.ToJson(StageData);
-        PlayerPrefs.SetString(dataSaveKey, json);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadStageData()
-    {
-        if (PlayerPrefs.HasKey(dataSaveKey))
-        {
-            string json = PlayerPrefs.GetString(dataSaveKey);
-            StageData = JsonUtility.FromJson<StageData>(json);
-            Debug.Log(json);
-        }
-        else
-        {
-            SaveStageData();
-        }
-    }
-
-    private void OnEnable()
-    {
-        LoadStageData();
-    }
-
-    private void OnDisable()
-    {
-        SaveStageData();
-    }
-
-    #endregion
 }
