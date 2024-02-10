@@ -7,8 +7,10 @@ public class PlatformController : Observer<GameController>
 
     private float targetValue;
     private bool isPlus = true;
+    private bool isCanChange = true;
 
     [SerializeField] private float changeAnimSpeed = 5f;
+    [SerializeField] private float changeDelayTime = 0.2f;
 
     private float initAmplitude;
 
@@ -64,8 +66,10 @@ public class PlatformController : Observer<GameController>
 
     private void ChangeAmplitude()
     {
-        isPlus = !isPlus;
+        if (false == isCanChange) return;
+        isCanChange = false;
 
+        isPlus = !isPlus;
         if (isPlus)
         {
             targetValue = -initAmplitude;
@@ -74,6 +78,10 @@ public class PlatformController : Observer<GameController>
         {
             targetValue = initAmplitude;
         }
+
+        StartCoroutine(this.GiveDelayWithAction(changeDelayTime, () =>
+        {
+            isCanChange = true;
+        }));
     }
-    
 }

@@ -5,7 +5,7 @@ public class StageData
     public int StageNumber = 1;
 
     [Header("Map")]
-    public float Frequency = 2.7f;
+    public float Frequency = 4f;
     public float MoveSpeed = 0f;
 
     [Header("Obstacle")]
@@ -16,7 +16,7 @@ public class StageData
     {
         StageNumber++;
 
-        Frequency += 0.03f;
+        Frequency += 0.02f;
         MoveSpeed += 0.025f;
         SpawnInterval -= 0.5f;
 

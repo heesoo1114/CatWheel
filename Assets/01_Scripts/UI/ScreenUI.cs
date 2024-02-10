@@ -34,8 +34,8 @@ public abstract class ScreenUI : PoolableMono
         }
     }
 
-    public abstract void OnShow();
-    public abstract void OnHide();  
+    public abstract void OnShow(); // onEnable, start
+    public abstract void OnHide(); // onDisable
 
     public override void OnPop()
     {

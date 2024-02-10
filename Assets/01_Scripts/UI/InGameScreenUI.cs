@@ -10,13 +10,13 @@ public class InGameScreenUI : ScreenUI
     private Slider distanceSlider;
     private TextMeshProUGUI stageText;
 
-    private float goalLinePositionX = 220;
+    private float goalLinePositionX = 300;
     private float toMaxValuePercent;
 
     protected override void Awake()
     {
         base.Awake();
-        stageText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        stageText = transform.Find("StageText").GetComponent<TextMeshProUGUI>();
         distanceSlider = GetComponentInChildren<Slider>();
 
         toMaxValuePercent = distanceSlider.maxValue / goalLinePositionX;
