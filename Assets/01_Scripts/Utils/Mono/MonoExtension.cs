@@ -1,3 +1,4 @@
+using System.Net.NetworkInformation;
 using System.Collections;
 using UnityEngine;
 using System;
@@ -8,5 +9,10 @@ public static class MonoExtension
     {
         yield return new WaitForSeconds(delayTime);
         action?.Invoke();
+    }
+
+    public static bool IsNetworkAvailable(this MonoBehaviour mono)
+    {
+        return NetworkInterface.GetIsNetworkAvailable();
     }
 }

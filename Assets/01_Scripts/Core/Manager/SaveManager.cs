@@ -15,12 +15,14 @@ public class SaveManager : MonoSingleton<SaveManager>
             string key = data.GetType().Name;
             PlayerPrefs.SetString(key, json);
             PlayerPrefs.Save();
+
+            Debug.Log(key + " : " + json);
         }
     }
 
     public T LoadData<T>() where T : new()
     {
-        T loadData = new T();
+        T loadData = new ();
         string key = loadData.GetType().Name; 
 
         if (PlayerPrefs.HasKey(key))
@@ -33,7 +35,6 @@ public class SaveManager : MonoSingleton<SaveManager>
         {
             SaveData(loadData);
         }
-
         return loadData;
     }
 }

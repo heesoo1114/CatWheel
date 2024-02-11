@@ -29,6 +29,7 @@ public class GameManager : MonoSingleton<GameManager>
         InputHandler.Instance.Init();
         AudioManager.Instance.Init();
         SaveManager.Instance.Init();
+        AdManager.Instance.Init();
     }
 
     public void GameStart()

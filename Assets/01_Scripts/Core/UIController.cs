@@ -75,7 +75,6 @@ public class UIController : Observer<GameController>
         {
             screens.Add(screen);
         }
-
         return screen;
     }
 }
