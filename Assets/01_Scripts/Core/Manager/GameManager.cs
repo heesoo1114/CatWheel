@@ -30,6 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
         AudioManager.Instance.Init();
         SaveManager.Instance.Init();
         AdManager.Instance.Init();
+        FirebaseManager.Instance.Init();
     }
 
     public void GameStart()

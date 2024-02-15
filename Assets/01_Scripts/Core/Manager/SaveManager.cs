@@ -1,10 +1,11 @@
+using Firebase.Database;
 using UnityEngine;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
     public override void Init()
     {
-        // do nothing
+        
     }
 
     public void SaveData<T>(T data) where T : new()

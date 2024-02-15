@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GameController : Subject 
 {
-    [SerializeField]
-    private GameState gameState = GameState.Ready;
+    [SerializeField] private GameState gameState = GameState.Ready;
+    public GameState GameState => gameState;
 
     public bool IsReady => gameState == GameState.Ready;
     public bool IsPlaying => gameState == GameState.Playing;
@@ -15,13 +15,14 @@ public class GameController : Subject
         NotifyObservers();
     }
 
-    public void ChangeGameState(GameState state)
+    public void ChangeGameState(GameState newState)
     {
-        if (state != gameState)
+        if (newState == gameState)
         {
-            gameState = state;
+            return;
         }
 
+        gameState = newState;
         NotifyObservers(); // GameState가 변경된 것을 알려주자
     }
 }
