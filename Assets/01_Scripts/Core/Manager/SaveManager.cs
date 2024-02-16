@@ -1,4 +1,3 @@
-using Firebase.Database;
 using UnityEngine;
 
 public class SaveManager : MonoSingleton<SaveManager>

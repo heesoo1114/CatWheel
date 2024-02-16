@@ -17,7 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GetComponent<GameController>();
-
+        // PlayerPrefs.DeleteAll();
         SetData();
         SetFrameRate();
         Init();

@@ -46,7 +46,7 @@ public class UIController : Observer<GameController>
     {
         ClearSreen();
 
-        if (GameManager.Instance.PlayerData.Name == "µ¥±¼µ¥±¼")
+        if (GameManager.Instance.PlayerData.Name == "Guest")
         {
             var infoInputScreen = GetScreenUI(infoInputScreenString);
             infoInputScreen.Show();
