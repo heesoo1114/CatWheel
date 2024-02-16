@@ -6,8 +6,8 @@ public class AdManager : MonoSingleton<AdManager>
     private BannerView bannerAd;
     private InterstitialAd frontAd;
 
-    [SerializeField] private string frontAdId = "ca-app-pub-5714181718235393~3436478902";
-    [SerializeField] private string bennerAdId = "ca-app-pub-5714181718235393~3436478902";
+    [SerializeField] private string frontAdId = "ca-app-pub-5714181718235393/6271620022";
+    [SerializeField] private string bennerAdId = "ca-app-pub-5714181718235393/7584701691";
 
     public override void Init()
     {
