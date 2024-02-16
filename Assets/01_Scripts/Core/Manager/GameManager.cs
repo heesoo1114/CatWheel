@@ -30,7 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
         AudioManager.Instance.Init();
         SaveManager.Instance.Init();
         AdManager.Instance.Init();
-        FirebaseManager.Instance.Init();
+        UserManager.Instance.Init();
     }
 
     public void GameStart()
@@ -43,6 +43,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (isClear)
         {
             gameController.ChangeGameState(GameState.Clear);
+            UserManager.Instance.UpdateUser(PlayerData.Name, StageData.StageNumber);
             StageData.StageUp();
             AudioManager.Instance.Play(clearClip);
         }

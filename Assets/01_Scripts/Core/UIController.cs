@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Diagnostics;
+using static UnityEngine.ParticleSystem;
 
 public class UIController : Observer<GameController>
 {
@@ -7,6 +9,8 @@ public class UIController : Observer<GameController>
     private string coverScreenString = "CoverScreen";
     private string mainScreenString = "MainScreen";
     private string inGameScreenString = "InGameScreen";
+    private string rankingScreenString = "RankingScreen";
+    private string infoInputScreenString = "InfoInputScreen";
 
     public override void Notify()
     {
@@ -42,9 +46,23 @@ public class UIController : Observer<GameController>
     {
         ClearSreen();
 
-        var mainScreen = GetScreenUI(mainScreenString);
-        mainScreen.Show();
-        mainScreen.transform.SetAsFirstSibling();
+        if (GameManager.Instance.PlayerData.Name == "µ¥±¼µ¥±¼")
+        {
+            var infoInputScreen = GetScreenUI(infoInputScreenString);
+            infoInputScreen.Show();
+        }
+
+        var mainScreen = GetScreenUI(mainScreenString) as MainScreenUI;
+        if (mainScreen != null)
+        {
+            mainScreen.OnRankigButtonClick += (() =>
+            {
+                var rankingScreen = GetScreenUI(rankingScreenString);
+                rankingScreen.Show();
+            });
+            mainScreen.Show();
+            mainScreen.transform.SetAsFirstSibling();
+        }
     }
 
     private void OnPlaying()
@@ -69,7 +87,7 @@ public class UIController : Observer<GameController>
     
     private ScreenUI GetScreenUI(string poolID, bool isAutoDelete = false)
     {
-        ScreenUI screen = PoolManager.Instance.Pop(poolID) as ScreenUI;
+        var screen = PoolManager.Instance.Pop(poolID) as ScreenUI;
 
         if (false == isAutoDelete)
         {

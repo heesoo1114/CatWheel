@@ -1,5 +1,5 @@
 public class PlayerData
 {
-    public string Name;
+    public string Name = "Guest";
     public bool isMuted;
 }

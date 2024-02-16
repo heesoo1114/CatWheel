@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class MainScreenUI : ScreenUI
 {
@@ -11,6 +12,8 @@ public class MainScreenUI : ScreenUI
     private Image soundIconImage;
     [SerializeField] private Sprite audioPlayImage;
     [SerializeField] private Sprite audioMuteImage;
+
+    public event Action OnRankigButtonClick;
 
     protected override void Awake()
     {
@@ -25,13 +28,18 @@ public class MainScreenUI : ScreenUI
 
         playButton.onClick.AddListener(GameManager.Instance.GameStart);
         soundButton.onClick.AddListener(OnSoundButtonClick);
-        rankingButton.onClick.AddListener(() => Debug.Log("rankingButton"));
+        rankingButton.onClick.AddListener(() => OnRankigButtonClick?.Invoke());
         exitButton.onClick.AddListener(GameManager.Instance.FinishGame);
     }
 
     private void OnSoundButtonClick()
     {
         AudioManager.Instance.VolumeChange();
+        AudioIconSetting();
+    }
+
+    private void AudioIconSetting()
+    {
         if (AudioManager.Instance.IsMuted)
         {
             soundIconImage.sprite = audioMuteImage;
@@ -44,18 +52,11 @@ public class MainScreenUI : ScreenUI
 
     public override void OnShow()
     {
-        if (AudioManager.Instance.IsMuted)
-        {
-            soundIconImage.sprite = audioMuteImage;
-        }
-        else
-        {
-            soundIconImage.sprite = audioPlayImage;
-        }
+        AudioIconSetting();
     }
 
     public override void OnHide()
     {
-        
+        OnRankigButtonClick = null;
     }
 }
