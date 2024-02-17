@@ -1,4 +1,5 @@
 using GoogleMobileAds.Api;
+using System;
 using UnityEngine;
 
 public class AdManager : MonoSingleton<AdManager>
@@ -6,13 +7,17 @@ public class AdManager : MonoSingleton<AdManager>
     private BannerView bannerAd;
     private InterstitialAd frontAd;
 
-    [SerializeField] private string frontAdId = "ca-app-pub-5714181718235393/6271620022";
-    [SerializeField] private string bennerAdId = "ca-app-pub-5714181718235393/7584701691";
+    // private readonly string appId = "ca-app-pub-5714181718235393~7017903097";
+    private readonly string frontAdId = "ca-app-pub-5714181718235393/6271620022";
+    private readonly string bennerAdId = "ca-app-pub-5714181718235393/7584701691";
 
     public override void Init()
     {
         if (this.IsNetworkAvailable())
         {
+            // 모바일 광고 SDK를 초기화함.
+            MobileAds.Initialize(initStatus => { });
+
             LoadFrontAd();
             LoadBannerAd();
         }
